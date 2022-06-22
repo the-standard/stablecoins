@@ -19,9 +19,9 @@ describe('SEuro', function () {
       expect(await SEuro.hasRole(BR, owner.address)).to.eq(true);
     });
 
-    it('grants minter and burner role to owner', async () => {
-      expect(await SEuro.hasRole(MR, owner.address)).to.eq(true);
-      expect(await SEuro.hasRole(BR, owner.address)).to.eq(true);
+    it('grants minter and burner role to admin', async () => {
+      expect(await SEuro.hasRole(MR, admin.address)).to.eq(true);
+      expect(await SEuro.hasRole(BR, admin.address)).to.eq(true);
     });
 
     it('does not grand minter / burner role for non-admins', async () => {
@@ -71,32 +71,32 @@ describe('SEuro', function () {
   });
 
   describe('granting roles', async () => {
-    it('allows contract owner to grant roles', async () => {
-      await SEuro.connect(owner).grantRole(MR, non_admin.address);
-
-      expect(await SEuro.hasRole(MR, non_admin.address)).to.eq(true);
-    });
-
     it('does not allow non-owner to grant roles', async () => {
       const grant = SEuro.connect(admin).grantRole(MR, non_admin.address);
 
       await expect(grant).to.be.reverted;
       expect(await SEuro.hasRole(MR, non_admin.address)).to.eq(false);
     });
+
+    it('allows contract owner to grant roles', async () => {
+      await SEuro.connect(owner).grantRole(MR, non_admin.address);
+
+      expect(await SEuro.hasRole(MR, non_admin.address)).to.eq(true);
+    });
   });
 
   describe('revoking roles', async () => {
-    it('allows contract owner to revoke roles', async () => {
-      await SEuro.connect(owner).revokeRole(MR, admin.address);
-
-      expect(await SEuro.hasRole(MR, admin.address)).to.eq(false);
-    });
-
     it('does not allow non-owner to revoke roles', async () => {
       const revoke = SEuro.connect(non_admin).revokeRole(MR, admin.address);
 
       await expect(revoke).to.be.reverted;
       expect(await SEuro.hasRole(MR, admin.address)).to.eq(true);
+    });
+
+    it('allows contract owner to revoke roles', async () => {
+      await SEuro.connect(owner).revokeRole(MR, admin.address);
+
+      expect(await SEuro.hasRole(MR, admin.address)).to.eq(false);
     });
   });
 });
