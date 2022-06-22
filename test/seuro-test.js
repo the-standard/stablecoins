@@ -30,7 +30,7 @@ describe('SEuro', function () {
     });
   });
 
-  describe('minting', async() => {
+  describe('minting', async () => {
     it('reverts when minted by non-admin', async () => {
       const value = ethers.utils.parseEther('0.5');
       const mint = SEuro.connect(address_2).mint(address_1.address, value);
@@ -48,7 +48,7 @@ describe('SEuro', function () {
     });
   });
 
-  describe('burning', async() => {
+  describe('burning', async () => {
     it('reverts when burned by non-admin', async () => {
       const value = ethers.utils.parseEther('0.5');
       await SEuro.connect(address_1).mint(address_1.address, value);
@@ -69,5 +69,19 @@ describe('SEuro', function () {
       expect(await SEuro.balanceOf(address_1.address)).to.eq(0);
     });
   });
-  
+
+  describe('granting roles', async () => {
+    it('allows contract owner to add roles', async () => {
+      await SEuro.connect(owner).grantRole(MR, address_2.address);
+
+      expect(await SEuro.hasRole(MR, address_2.address)).to.eq(true);
+    });
+
+    it('does not allow non-owner to add roles', async () => {
+      const grant = SEuro.connect(address_1).grantRole(MR, address_2.address);
+
+      await expect(grant).to.be.reverted;
+      expect(await SEuro.hasRole(MR, address_2.address)).to.eq(false);
+    });
+  });
 });
