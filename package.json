@@ -1,0 +1,29 @@
+{
+  "name": "stablecoins",
+  "version": "1.0.0",
+  "description": "The repo we store the contracts for all our stablecoins",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-standard/stablecoins.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/the-standard/stablecoins/issues"
+  },
+  "homepage": "https://github.com/the-standard/stablecoins#readme",
+  "devDependencies": {
+    "hardhat": "^2.9.9"
+  },
+  "dependencies": {
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.6.0",
+    "chai": "^4.3.6",
+    "dotenv": "^16.0.1"
+  }
+}
