@@ -19,6 +19,10 @@ describe("SEuro", function () {
       expect(await SEuro.hasRole(BR, owner.address)).to.eq(true);
     });
 
+    it('grants minter and burner role to owner', async () => {
+      expect(await SEuro.hasRole(MR, owner.address)).to.eq(true);
+      expect(await SEuro.hasRole(BR, owner.address)).to.eq(true);
+    });
   });
 
   // it("initialises token with roles", async function () {
