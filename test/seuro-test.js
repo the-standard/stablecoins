@@ -48,31 +48,26 @@ describe('SEuro', function () {
     });
   });
 
-  // it('initialises token with roles', async function () {
+  describe('burning', async() => {
+    it('reverts when burned by non-admin', async () => {
+      const value = ethers.utils.parseEther('0.5');
+      await SEuro.connect(address_1).mint(address_1.address, value);
 
-  //   let userBalance = await seuro.balanceOf(address_1.address);
-  //   expect(userBalance).to.eq(0);
+      const burn = SEuro.connect(address_2).burn(address_1.address, value);
 
-  //   const value = ethers.utils.parseEther('0.5');
+      await expect(burn).to.be.revertedWith('invalid-burner');
+      expect(await SEuro.balanceOf(address_1.address)).to.eq(value);
+    });
 
-  //   // mint
-  //   await seuro.mint(address_1.address, value);
+    it('burns when performed by admin', async () => {
+      const value = ethers.utils.parseEther('0.5');
+      await SEuro.connect(address_1).mint(address_1.address, value);
 
-  //   userBalance = await seuro.balanceOf(address_1.address);
-  //   expect(userBalance).to.eq(value);
+      const burn = SEuro.connect(address_1).burn(address_1.address, value);
 
-  //   // burn
-  //   await seuro.burn(address_1.address, value);
-
-  //   userBalance = await seuro.balanceOf(address_1.address);
-  //   expect(userBalance).to.eq(0);
+      await expect(burn).not.to.be.revertedWith('invalid-burner');
+      expect(await SEuro.balanceOf(address_1.address)).to.eq(0);
+    });
+  });
   
-  //   expect(await seuro.hasRole(mr, address_1.address)).to.eq(true);
-    
-  //   expect(await seuro.hasRole(br, owner.address)).to.eq(true);
-  //   expect(await seuro.hasRole(br, address_1.address)).to.eq(true);
-  // });
-
-
-  // TODO test ownership and roles
 });
