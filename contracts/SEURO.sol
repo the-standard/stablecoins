@@ -27,7 +27,7 @@ contract SEuro is ERC20, AccessControl {
   }
 
   function addMinter(address _address) public {
-      grantRole(MINTER_ROLE, _address)
+      grantRole(MINTER_ROLE, _address);
   }
 
   function removeMinter(address _address) public {
