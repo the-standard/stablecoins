@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.2;
+pragma solidity ^0.8.15;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
@@ -8,17 +8,12 @@ contract SEuro is ERC20, AccessControl {
   bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
   bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
-  constructor(string memory name, string memory symbol, address[] memory _admins)
+  constructor(string memory name, string memory symbol)
       ERC20(name, symbol)
   {
     _grantRole(MINTER_ROLE, msg.sender);
     _grantRole(BURNER_ROLE, msg.sender);
     _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-
-    for(uint8 i=0; i<_admins.length; i++){
-      _grantRole(MINTER_ROLE, _admins[i]);
-      _grantRole(BURNER_ROLE, _admins[i]);
-    }
   }
 
   function mint(address to, uint256 amount) public {
