@@ -24,7 +24,7 @@ contract SEuro is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgra
   /// @custom:oz-upgrades-unsafe-allow constructor
   constructor() initializer {}
     
-  function _authorizeUpgrade(address) internal override {
+  function _authorizeUpgrade(address) internal override view {
     require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "invalid-admin");
   }
 
