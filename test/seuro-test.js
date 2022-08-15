@@ -29,9 +29,29 @@ describe('SEuro', function () {
       expect(await SEuro.hasRole(BR, admin.address)).to.eq(true);
     });
 
-    it('does not grand minter / burner role for non-admins', async () => {
+    it('does not grant minter / burner role for non-admins', async () => {
       expect(await SEuro.hasRole(MR, non_admin.address)).to.eq(false);
       expect(await SEuro.hasRole(BR, non_admin.address)).to.eq(false);
+    });
+  });
+
+  describe('upgrading', async () => {
+    it('allows the admin account to upgrade the contract', async () => {
+
+      const SEuroContractV2 = await ethers.getContractFactory('SEuroV2')
+      const two = await upgrades.upgradeProxy(SEuro.address, SEuroContractV2);
+      await two.deployed();
+
+      expect(two.address).to.eq(SEuro.address);
+    });
+
+    it('reverts when the admin aint an admin!!', async () => {
+      const AR = await SEuro.DEFAULT_ADMIN_ROLE();
+      await SEuro.revokeRole(AR, owner.address)
+
+      const SEuroContractV2 = await ethers.getContractFactory('SEuroV2')
+      const two = upgrades.upgradeProxy(SEuro.address, SEuroContractV2);
+      await expect(two).to.be.revertedWith('invalid-admin');
     });
   });
 

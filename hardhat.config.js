@@ -1,5 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require('dotenv').config();
+require('@openzeppelin/hardhat-upgrades');
 
 const { INFURA_API_KEY } = process.env;
 

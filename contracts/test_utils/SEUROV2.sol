@@ -7,26 +7,14 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 
-contract SEuro is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgradeable, AccessControlUpgradeable {
+contract SEuroV2 is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgradeable, AccessControlUpgradeable {
   bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
   bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
-
-  function initialize(string memory name, string memory symbol) initializer public {
-      __ERC20_init(name, symbol);
-      __Ownable_init();
-      __UUPSUpgradeable_init();
-
-      _grantRole(MINTER_ROLE, msg.sender);
-      _grantRole(BURNER_ROLE, msg.sender);
-      _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-  }
 
   /// @custom:oz-upgrades-unsafe-allow constructor
   constructor() initializer {}
     
-  function _authorizeUpgrade(address) internal override {
-    require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "invalid-admin");
-  }
+  function _authorizeUpgrade(address) internal override onlyOwner {}
 
   function mint(address to, uint256 amount) public {
     require(hasRole(MINTER_ROLE, msg.sender), "invalid-minter");
@@ -53,5 +41,4 @@ contract SEuro is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgra
   function removeBurner(address _address) public {
       revokeRole(BURNER_ROLE, _address);
   }
-
 }
