@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { ethers } = require('hardhat');
+const { ethers, upgrades } = require('hardhat');
 
 describe('SEuro', function () {
   const MR = ethers.utils.keccak256(ethers.utils.toUtf8Bytes('MINTER_ROLE'));
@@ -9,7 +9,7 @@ describe('SEuro', function () {
   beforeEach(async () => {
     [owner, admin, non_admin] = await ethers.getSigners();
     const SEuroContract = await ethers.getContractFactory('SEuro');
-    SEuro = await SEuroContract.connect(owner).deploy('sEURO', 'SEUR');
+    SEuro = await upgrades.deployProxy(SEuroContract, ['sEURO', 'SEUR'], {kind: 'uups'});
     await SEuro.deployed();
   });
 
