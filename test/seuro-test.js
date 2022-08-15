@@ -9,7 +9,7 @@ describe('SEuro', function () {
   beforeEach(async () => {
     [owner, admin, non_admin] = await ethers.getSigners();
     const SEuroContract = await ethers.getContractFactory('SEuro');
-    SEuro = await SEuroContract.connect(owner).deploy('sEURO', 'SEUR', [admin.address]);
+    SEuro = await SEuroContract.connect(owner).deploy('sEURO', 'SEUR');
     await SEuro.deployed();
   });
 
@@ -20,6 +20,11 @@ describe('SEuro', function () {
     });
 
     it('grants minter and burner role to admin', async () => {
+      expect(await SEuro.hasRole(MR, admin.address)).to.eq(false);
+      expect(await SEuro.hasRole(BR, admin.address)).to.eq(false);
+
+      await SEuro.addMinter(admin.address);
+      await SEuro.addBurner(admin.address);
       expect(await SEuro.hasRole(MR, admin.address)).to.eq(true);
       expect(await SEuro.hasRole(BR, admin.address)).to.eq(true);
     });
@@ -40,6 +45,7 @@ describe('SEuro', function () {
     });
 
     it('mints when performed by admin', async () => {
+      await SEuro.addMinter(admin.address);
       const value = ethers.utils.parseEther('0.5');
       const mint = SEuro.connect(admin).mint(admin.address, value);
 
@@ -50,6 +56,7 @@ describe('SEuro', function () {
 
   describe('burning', async () => {
     it('reverts when burned by non-admin', async () => {
+      await SEuro.addMinter(admin.address);
       const value = ethers.utils.parseEther('0.5');
       await SEuro.connect(admin).mint(admin.address, value);
 
@@ -60,6 +67,9 @@ describe('SEuro', function () {
     });
 
     it('burns when performed by admin', async () => {
+      await SEuro.addMinter(admin.address);
+      await SEuro.addBurner(admin.address);
+
       const value = ethers.utils.parseEther('0.5');
       await SEuro.connect(admin).mint(admin.address, value);
 
