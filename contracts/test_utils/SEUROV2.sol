@@ -14,7 +14,9 @@ contract SEuroV2 is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpg
   /// @custom:oz-upgrades-unsafe-allow constructor
   constructor() initializer {}
     
-  function _authorizeUpgrade(address) internal override onlyOwner {}
+  function _authorizeUpgrade(address) internal override {
+    require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "invalid-admin");
+  }
 
   function mint(address to, uint256 amount) public {
     require(hasRole(MINTER_ROLE, msg.sender), "invalid-minter");
