@@ -21,4 +21,3 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npx hardhat test --network hardhat
-
