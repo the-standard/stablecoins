@@ -1,4 +1,4 @@
-const { hre, ethers, upgrades } = require("hardhat");
+const { ethers, upgrades } = require("hardhat");
 
 async function main() {
   const SEuroContract = await ethers.getContractFactory('SEuro');
