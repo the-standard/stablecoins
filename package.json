@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/the-standard/stablecoins#readme",
   "devDependencies": {
+    "@arbitrum/sdk": "^3.1.6",
     "@openzeppelin/contracts-upgradeable": "^4.7.3",
     "@openzeppelin/hardhat-upgrades": "^1.20.0",
     "hardhat": "^2.9.9"
