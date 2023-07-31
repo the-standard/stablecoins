@@ -23,11 +23,11 @@ contract EUROs is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgra
     }
 
     function name() public view virtual override returns (string memory) {
-        return "euros";
+        return "The Standard EURO";
     }
 
     function symbol() public view virtual override returns (string memory) {
-        return "euros";
+        return "EUROs";
     }
 
     function mint(address to, uint256 amount) public {
@@ -54,6 +54,11 @@ contract EUROs is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgra
 
     function removeBurner(address _address) public {
         revokeRole(BURNER_ROLE, _address);
+    }
+
+    function completeUpgradeForArbitrum(address _customGatewayAddress, address _routerAddress) external onlyOwner {
+        customGatewayAddress = _customGatewayAddress;
+        routerAddress = _routerAddress;
     }
 
     function isArbitrumEnabled() external view override returns (uint8) {
