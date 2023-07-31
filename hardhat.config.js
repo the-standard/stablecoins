@@ -18,7 +18,7 @@ module.exports = {
       accounts: [`${MAINNET_PRIVATE_KEY}`]
     },
     arbitrum: {
-      url: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
+      url: `https://arb1.arbitrum.io/rpc`,
       accounts: [`${MAINNET_PRIVATE_KEY}`]
     }
   },
