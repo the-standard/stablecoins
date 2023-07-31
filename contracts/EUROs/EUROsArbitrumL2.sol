@@ -8,7 +8,7 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import "contracts/interfaces/Arbitrum.sol";
 
-contract EUROsArbitrum is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgradeable, AccessControlUpgradeable, IArbitrumL2Token {
+contract EUROsArbitrumL2 is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgradeable, AccessControlUpgradeable, IArbitrumL2Token {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
@@ -34,14 +34,6 @@ contract EUROsArbitrum is Initializable, ERC20Upgradeable, UUPSUpgradeable, Owna
 
     function _authorizeUpgrade(address) internal view override {
         require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "invalid-admin");
-    }
-
-    function name() public view virtual override returns (string memory) {
-        return "euros";
-    }
-
-    function symbol() public view virtual override returns (string memory) {
-        return "euros";
     }
 
     function mint(address to, uint256 amount) public {
