@@ -13,10 +13,13 @@ module.exports = {
     //   accounts: [`${GOERLI_PRIVATE_KEY}`],
     //   // gasMultiplier: 2,
     // },
-    // mainnet: {
-    //   url: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
-    //   // accounts: [`${MAINNET_PRIVATE_KEY}`],
-    //   // gasMultiplier: 2,
-    // }
+    mainnet: {
+      url: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
+      accounts: [`${MAINNET_PRIVATE_KEY}`]
+    },
+    arbitrum: {
+      url: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
+      accounts: [`${MAINNET_PRIVATE_KEY}`]
+    }
   },
 };
