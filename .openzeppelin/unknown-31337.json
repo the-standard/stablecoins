@@ -22,23 +22,33 @@
       "kind": "uups"
     },
     {
-      "address": "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
-      "txHash": "0x1e7f0f5de7206387d5ffb9140e86eaae2c87a97838852fff287719b15c8ea890",
-      "kind": "uups"
-    },
-    {
       "address": "0x9A676e781A523b5d0C0e43731313A708CB607508",
       "txHash": "0x3e7d3d7760f4fd86d5d4dc6cf8780786ea151505a6f7099e0e8cd6ba964e82bb",
       "kind": "uups"
     },
     {
-      "address": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
-      "txHash": "0x61d5e43acd2242f54501589891ea6b520751f04a2fe6a377967eae8f1cecb394",
+      "address": "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c",
+      "txHash": "0x7d89c2005c6277766ef8b83333e7f2efe43322bdab2db343a596e4bbe17e6aa6",
       "kind": "uups"
     },
     {
-      "address": "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c",
-      "txHash": "0x7d89c2005c6277766ef8b83333e7f2efe43322bdab2db343a596e4bbe17e6aa6",
+      "address": "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1",
+      "txHash": "0x490425d70d3f35ba5f3c54391265a2a0efed779214cb1574d31a339c11ffcae5",
+      "kind": "uups"
+    },
+    {
+      "address": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
+      "txHash": "0x0764f8885ab0bb5c6ec3563816963c6cae3f37d066fb301f86160df71ae9396b",
+      "kind": "uups"
+    },
+    {
+      "address": "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
+      "txHash": "0x03eee5c28f0633f8ca4a8488e85a7cc0729a9d0e8e239f4ec7de52fd17d23988",
+      "kind": "uups"
+    },
+    {
+      "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "txHash": "0xd7db5037c7a97580323e10c74bacbe10e2a2ccc2d283789f6f0283666e05f3b8",
       "kind": "uups"
     },
     {
@@ -67,28 +77,18 @@
       "kind": "uups"
     },
     {
+      "address": "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+      "txHash": "0x1e7f0f5de7206387d5ffb9140e86eaae2c87a97838852fff287719b15c8ea890",
+      "kind": "uups"
+    },
+    {
       "address": "0x0B306BF915C4d645ff596e518fAf3F9669b97016",
-      "txHash": "0xcaffac6130639a20eb01426c7bc89b315fa6486ed796863bd84af71ff85682e6",
+      "txHash": "0x80e36fe58a87db730b47e9706f7f3e71ff887c570f80801019ca58e69e06380d",
       "kind": "uups"
     },
     {
-      "address": "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1",
-      "txHash": "0x490425d70d3f35ba5f3c54391265a2a0efed779214cb1574d31a339c11ffcae5",
-      "kind": "uups"
-    },
-    {
-      "address": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
-      "txHash": "0x0764f8885ab0bb5c6ec3563816963c6cae3f37d066fb301f86160df71ae9396b",
-      "kind": "uups"
-    },
-    {
-      "address": "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
-      "txHash": "0x03eee5c28f0633f8ca4a8488e85a7cc0729a9d0e8e239f4ec7de52fd17d23988",
-      "kind": "uups"
-    },
-    {
-      "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-      "txHash": "0x31440aaccbf5f5551cdddc1cb91e8271c26625cf3a87b14893ce2f03ee4572c6",
+      "address": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
+      "txHash": "0xa715abb2ae5dc57930e961281ea8275785054c63961e0350a8e87011756cdc47",
       "kind": "uups"
     }
   ],
@@ -527,9 +527,9 @@
         }
       }
     },
-    "d7a3204c84396f616028e4866de738af7c18a7e296dcc199833f5dfce2ac90b3": {
+    "3cd2bb9c05cff3954cf638c00157297ccfcae22fd04914a8d1f06eac693d010f": {
       "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-      "txHash": "0xf3eb86bd90fc26df8fc2820a0842f8c271422309bc1d986a3b6a054d696e2652",
+      "txHash": "0xe92d1a12f78c61a8ffe7b8b9dcda58d8809b7d5b21cf63f7085f4665d63f738a",
       "layout": {
         "storage": [
           {
@@ -660,22 +660,6 @@
             "type": "t_array(t_uint256)49_storage",
             "contract": "AccessControlUpgradeable",
             "src": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "l2Gateway",
-            "offset": 0,
-            "slot": "351",
-            "type": "t_address",
-            "contract": "EUROsArbitrumL2",
-            "src": "contracts/EUROs/EUROsArbitrumL2.sol:15"
-          },
-          {
-            "label": "l1Address",
-            "offset": 0,
-            "slot": "352",
-            "type": "t_address",
-            "contract": "EUROsArbitrumL2",
-            "src": "contracts/EUROs/EUROsArbitrumL2.sol:16"
           }
         ],
         "types": {
