@@ -2,7 +2,9 @@ require("@nomiclabs/hardhat-waffle");
 require('dotenv').config();
 require('@openzeppelin/hardhat-upgrades');
 
-const { INFURA_API_KEY, GOERLI_PRIVATE_KEY, MAINNET_PRIVATE_KEY } = process.env;
+const { 
+  INFURA_API_KEY, GOERLI_PRIVATE_KEY, MAINNET_PRIVATE_KEY, ETHERSCAN_KEY, ARBISCAN_KEY
+} = process.env;
 
 module.exports = {
   solidity: '0.8.15',
@@ -22,4 +24,9 @@ module.exports = {
       accounts: [`${MAINNET_PRIVATE_KEY}`]
     }
   },
+  etherscan: {
+    apiKey: {
+      arbitrumOne: ARBISCAN_KEY
+    }
+  }
 };
