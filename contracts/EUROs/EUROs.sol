@@ -101,4 +101,16 @@ contract EUROs is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgra
 
         shouldRegisterGateway = prev;
     }
+
+    function transferFrom(
+        address sender,
+        address recipient,
+        uint256 amount
+    ) public override(IArbitrumL1Token, ERC20Upgradeable) returns (bool) {
+        return super.transferFrom(sender, recipient, amount);
+    }
+
+    function balanceOf(address account) public view override(IArbitrumL1Token, ERC20Upgradeable) returns (uint256) {
+        return super.balanceOf(account);
+    }
 }
