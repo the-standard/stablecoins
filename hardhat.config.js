@@ -3,7 +3,7 @@ require('dotenv').config();
 require('@openzeppelin/hardhat-upgrades');
 
 const { 
-  INFURA_API_KEY, GOERLI_PRIVATE_KEY, MAINNET_PRIVATE_KEY, ETHERSCAN_KEY, ARBISCAN_KEY
+  INFURA_API_KEY, GOERLI_PRIVATE_KEY, MAINNET_PRIVATE_KEY, ETHERSCAN_KEY, ARBISCAN_KEY, ALCHEMY_ARBITRUM_KEY
 } = process.env;
 
 module.exports = {
@@ -15,17 +15,18 @@ module.exports = {
     //   accounts: [`${GOERLI_PRIVATE_KEY}`],
     //   // gasMultiplier: 2,
     // },
-    // mainnet: {
-    //   url: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
-    //   accounts: [`${MAINNET_PRIVATE_KEY}`]
-    // },
-    // arbitrum: {
-    //   url: `https://arb1.arbitrum.io/rpc`,
-    //   accounts: [`${MAINNET_PRIVATE_KEY}`]
-    // }
+    mainnet: {
+      url: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
+      accounts: [`${MAINNET_PRIVATE_KEY}`]
+    },
+    arbitrum: {
+      url: `https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_ARBITRUM_KEY}`,
+      accounts: [MAINNET_PRIVATE_KEY]
+    }
   },
   etherscan: {
     apiKey: {
+      mainnet: ETHERSCAN_KEY,
       arbitrumOne: ARBISCAN_KEY
     }
   }
